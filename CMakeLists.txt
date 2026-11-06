@@ -24,12 +24,7 @@ endif()
 
 # The pieces both native programs use (the JSON reader, UTF-8 paths, the sound analysis, the random picker, folder watching, miniaudio, Dear ImGui)
 # live in shared/native/. Nothing here depends on other projects.
-# In the public copy of this program the shared code sits inside it (shared/native); in the full repository it is one folder up.
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/shared/native)
-  set(SHARED ${CMAKE_CURRENT_SOURCE_DIR}/shared/native)
-else()
-  set(SHARED ${CMAKE_CURRENT_SOURCE_DIR}/../shared/native)
-endif()
+set(SHARED ${CMAKE_CURRENT_SOURCE_DIR}/shared/native)
 
 # The logic: settings, equalizer presets, formatters. Uses the shared JSON reader.
 add_library(dva_core src/core.cpp src/dsp.cpp src/stretch.cpp src/theme.cpp ${SHARED}/src/json.cpp)
