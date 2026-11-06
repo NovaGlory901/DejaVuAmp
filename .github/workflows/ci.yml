@@ -1,0 +1,28 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SDL_VIDEODRIVER: offscreen
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build tools and libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build pkg-config libsdl2-dev libgles2-mesa-dev \
+            libavformat-dev libavcodec-dev libswresample-dev libavutil-dev
+      - name: Build with the address and undefined-behaviour sanitizers
+        run: |
+          cmake -S . -B build -G Ninja -DDVA_SANITIZE=ON
+          cmake --build build
+      - name: Tests
+        run: ctest --test-dir build --output-on-failure

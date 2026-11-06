@@ -1,0 +1,67 @@
+# Turned off on purpose: simplify-boolean-expr and redundant-casting rewrite NaN-safe guards and
+# platform-dependent casts; return-braced-init-list changes vector(n, v) into a two-element list.
+# The rest of the list is style that this code base does not follow (nested ?: for clamps, C arrays
+# for fixed tables and buffers, static helpers in .cpp files, recursion in the parsers).
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  cppcoreguidelines-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  -cppcoreguidelines-non-private-member-variables-in-classes,
+  misc-*,
+  -misc-non-private-member-variables-in-classes,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  performance-*,
+  readability-*,
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -readability-function-cognitive-complexity,
+  -readability-simplify-boolean-expr,
+  -modernize-return-braced-init-list,
+  -modernize-use-designated-initializers,
+  -modernize-raw-string-literal,
+  -readability-math-missing-parentheses,
+  -readability-implicit-bool-conversion,
+  -readability-trailing-comma,
+  -readability-redundant-casting,
+  -cppcoreguidelines-pro-bounds-avoid-unchecked-container-access,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -cppcoreguidelines-pro-type-vararg,
+  -misc-include-cleaner,
+  -bugprone-signed-bitwise,
+  -performance-enum-size,
+  -readability-avoid-nested-conditional-operator,
+  -cppcoreguidelines-avoid-c-arrays,
+  -modernize-avoid-c-arrays,
+  -bugprone-float-loop-counter,
+  -misc-no-recursion,
+  -misc-use-anonymous-namespace,
+  -misc-use-internal-linkage,
+  -cppcoreguidelines-avoid-const-or-ref-data-members,
+  -bugprone-throwing-static-initialization,
+  -bugprone-suspicious-include,
+  -bugprone-invalid-enum-default-initialization,
+  -bugprone-misplaced-widening-cast
+HeaderFilterRegex: '(include|src|apps)/.*'
+WarningsAsErrors: ''
+CheckOptions:
+  - {key: readability-identifier-naming.NamespaceCase, value: lower_case}
+  - {key: readability-identifier-naming.ClassCase, value: CamelCase}
+  - {key: readability-identifier-naming.StructCase, value: CamelCase}
+  - {key: readability-identifier-naming.EnumCase, value: CamelCase}
+  - {key: readability-identifier-naming.FunctionCase, value: lower_case}
+  - {key: readability-identifier-naming.VariableCase, value: lower_case}
+  - {key: readability-identifier-naming.ParameterCase, value: lower_case}
+  - {key: readability-identifier-naming.MemberCase, value: lower_case}
+  - {key: readability-identifier-naming.PrivateMemberCase, value: lower_case}
+  - {key: readability-identifier-naming.ProtectedMemberCase, value: lower_case}
+  - {key: readability-identifier-naming.PrivateMemberSuffix, value: _}
+  - {key: readability-identifier-naming.TypeAliasCase, value: CamelCase}
+  - {key: readability-identifier-naming.TemplateParameterCase, value: CamelCase}
+  - {key: readability-identifier-naming.ClassMemberCase, value: lower_case}
+  - {key: readability-identifier-naming.ConstexprVariableCase, value: lower_case}
+  - {key: readability-identifier-naming.EnumConstantCase, value: CamelCase}

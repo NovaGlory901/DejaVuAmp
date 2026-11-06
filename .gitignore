@@ -1,0 +1,13 @@
+build/
+build-*/
+.cache/
+compile_commands.json
+# people's own songs and settings stay on their own machine
+/music/*
+!/music/README.txt
+/eq-presets/*
+!/eq-presets/README.txt
+/settings.json
+
+/themes/*
+!/themes/README.txt
